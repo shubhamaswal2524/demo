@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Hookarray from "./Hookarray";
 
-function App() {
+const App = () => {
+  const [name, setName] = useState({ firstName: "", lastName: "" });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Hookarray />
+      <div>
+        <input
+          type="text"
+          id="first"
+          name="first"
+          value={name.firstName}
+          onChange={(event) =>
+            setName({ ...name, firstName: event.target.value })
+          }
+        />
+        <h3>FirstName is {name.firstName}</h3>
+      </div>
+      <div>
+        <input
+          type="text"
+          id="second"
+          name="second"
+          value={name.lastName}
+          onChange={(event) =>
+            setName({ ...name, lastName: event.target.value })
+          }
+        />
+        <h3>LastName is {name.lastName}</h3>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
